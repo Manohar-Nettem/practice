@@ -29,7 +29,7 @@ workflows:
         # set up local properties
         echo "flutter.sdk=$HOME/programs/flutter" > "$FCI_BUILD_DIR/android/local.properties"
       - flutter packages pub get
-      - flutter build apk --debug
+      - flutter build app-bundle --debug
       - |
         # generate signed universal apk with user specified keys
         android-app-bundle build-universal-apk \
