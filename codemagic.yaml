@@ -40,7 +40,7 @@ workflows:
           --key-pass $FCI_KEY_PASSWORD
       - find . -name "Podfile" -execdir pod install \;
       - flutter build ios --debug --no-codesign
-      - flutter build ipa --debug --no-codesign
+      - flutter build ipa --debug --export-options-plist
     artifacts:
       - build/**/outputs/apk/**/*.apk
       - build/**/outputs/bundle/**/*.aab
