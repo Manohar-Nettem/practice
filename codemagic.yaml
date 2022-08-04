@@ -29,7 +29,7 @@ workflows:
         # set up local properties
         echo "flutter.sdk=$HOME/programs/flutter" > "$FCI_BUILD_DIR/android/local.properties"
       - flutter packages pub get
-      - flutter build app-bundle --debug
+      - flutter build appbundle --debug
       - |
         # generate signed universal apk with user specified keys
         android-app-bundle build-universal-apk \
@@ -39,6 +39,7 @@ workflows:
           --ks-key-alias $FCI_KEY_ALIAS \
           --key-pass $FCI_KEY_PASSWORD
       - find . -name "Podfile" -execdir pod install \;
+      - flutter build ios --debug --no-codesign
       - flutter build ipa --debug --no-codesign
     artifacts:
       - build/**/outputs/apk/**/*.apk
